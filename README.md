@@ -1,5 +1,13 @@
 # Shopware Ergonode Integration
 
+## Our modification devEcommerce
+- Fix adding new variants (wrong grouping)
+- Full inheritance for variants
+- Add filterProductsNotMatchingSkuPattern (filter not products and parts)
+- Hide attributes with hide metadata value
+- Disable default filterable attribute for new attributes
+- Use only selected brands (temporary)
+
 ## Description
 
 This plugin synchronizes data from Ergonode to Shopware. It takes advantage of Ergonode's GraphQL API and utilizes

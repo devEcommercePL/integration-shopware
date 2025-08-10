@@ -15,6 +15,7 @@ use Ergonode\IntegrationShopware\Util\IsoCodeConverter;
 use Shopware\Core\Content\Product\Aggregate\ProductConfiguratorSetting\ProductConfiguratorSettingDefinition;
 use Shopware\Core\Content\Product\ProductEntity;
 use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\Uuid\Uuid;
 
 class VariantsTransformer
 {
@@ -78,6 +79,7 @@ class VariantsTransformer
         foreach ($transformedVariants as $variant) {
             $shopwareData = $variant->getShopwareData();
 
+            // start devEcommerce change - fix configuratorSettings when add a new option
             if (null !== $parentProduct) {
                 $parentProductId = $parentProduct->getId();
             } else{
@@ -91,7 +93,7 @@ class VariantsTransformer
             $shopwareData->setParentId($parentProductId);
 
             $swData->addChild($shopwareData);
-            if (property_exists(ProductEntity::class, 'variantListingConfig')) {
+            if (property_exists(ProductEntity::class, 'variantListingConfig')) { // devEcommerce change
                 $swData->setDisplayParent();
             }
             
@@ -104,6 +106,8 @@ class VariantsTransformer
                     ]);
                 }
             }
+            // end start devEcommerce change
+
 
             foreach ($variant->getSwProduct()?->getOptionIds() ?? [] as $optionId) {
                 if (
