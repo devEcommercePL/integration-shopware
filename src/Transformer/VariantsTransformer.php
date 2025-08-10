@@ -79,12 +79,30 @@ class VariantsTransformer
             $shopwareData = $variant->getShopwareData();
 
             if (null !== $parentProduct) {
-                $shopwareData->setParentId($parentProduct->getId());
+                $parentProductId = $parentProduct->getId();
+            } else{
+                if(!$swData->getData('id')) {
+                    $swData->setId(Uuid::randomHex());
+                }
+
+                $parentProductId = $swData->getData('id');
             }
 
+            $shopwareData->setParentId($parentProductId);
+
             $swData->addChild($shopwareData);
-            if (property_exists(ProductEntity::class, 'displayParent')) {
+            if (property_exists(ProductEntity::class, 'variantListingConfig')) {
                 $swData->setDisplayParent();
+            }
+            
+            if(!$variant->getSwProduct()) {
+                foreach ($variant->getShopwareData()->getData('options') as $option) {
+                    $swData->addConfigrationSettings([
+                        'id' => null,
+                        'productId' => $parentProductId,
+                        'optionId' => $option['id'],
+                    ]);
+                }
             }
 
             foreach ($variant->getSwProduct()?->getOptionIds() ?? [] as $optionId) {
