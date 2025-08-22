@@ -1,11 +1,20 @@
 # Shopware Ergonode Integration
 
 ## Our modification devEcommerce
+- Change php-graphql-client (not compatible with psr/http-message^2.0)
+- **Variants**:
 - Fix adding new variants (wrong grouping)
 - Full inheritance for variants
-- Add filterProductsNotMatchingSkuPattern (filter not products and parts)
+- **Attributes**:
 - Hide attributes with hide metadata value
 - Disable default filterable attribute for new attributes
+- Add filterProductsNotMatchingSkuPattern (filter not products and parts)
+- Category: inject the main category as tree root
+- Images: leave the original name as a prefix
+- **Change default**
+  - DEFAULT_STOCK_VALUE to "0"
+  - DEFAULT_GROSS_PRICE to "99999"
+  - minPurchaseMapping to "1"
 - Use only selected brands (temporary)
 
 ## Description
