@@ -3,11 +3,11 @@
 ## Our modification devEcommerce
 - Change php-graphql-client (not compatible with psr/http-message^2.0)
 - **Variants**:
-- Fix adding new variants (wrong grouping)
-- Full inheritance for variants
+  - Fix adding new variants (wrong grouping)
+  - Full inheritance for variants
 - **Attributes**:
-- Hide attributes with hide metadata value
-- Disable default filterable attribute for new attributes
+  - Hide attributes with hide metadata value
+  - Disable default filterable attribute for new attributes
 - Add filterProductsNotMatchingSkuPattern (filter not products and parts)
 - Category: inject the main category as tree root
 - Images: leave the original name as a prefix
