@@ -9,6 +9,7 @@
   - Hide attributes with hide metadata value
   - Disable default filterable attribute for new attributes
 - Add filterProductsNotMatchingSkuPattern (filter not products and parts)
+- Languages - updates only active languages
 - Category: inject the main category as tree root
 - Images: leave the original name as a prefix
 - **Change default**
